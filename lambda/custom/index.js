@@ -189,7 +189,6 @@ function QuizFunction(handlerInput) {
     } else if (supportsDisplay.call(this) && !testingOnSim) {
         speechOutput = 'You are already in the middle of a game. Please answer the question: ' + attributes.storedQuestion;
 
-
         response.withShouldEndSession(null);
 
         saveLastThingSaid(handlerInput, speechOutput);
@@ -752,6 +751,8 @@ function endSkill(pHandlerInput) {
     var speechOutput = "Thanks for checking out " + skillName + ". Learn more about " + categoryPlural + " another time. Goodbye!"
 
     const response = pHandlerInput.responseBuilder;
+    
+    response.withShouldEndSession(true);
 
     return response
         .speak(speechOutput)
